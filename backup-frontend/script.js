@@ -185,6 +185,8 @@ function activateTab(tabId) {
 });
 });
 
+
+// 견적문의 폼 제출 이벤트
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelector("form").addEventListener("submit", async function (e) {
     e.preventDefault(); // 폼 기본 동작 막기
@@ -205,12 +207,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("https://0bac-223-195-115-29.ngrok-free.app/apply", {
+      const response = await fetch("http://localhost:8080/apply", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        credentials: "include",
+        //credentials: "include",
         body: JSON.stringify({ name, number, content })
       });
 
@@ -233,13 +235,13 @@ async function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  const response = await fetch("https://0bac-223-195-115-29.ngrok-free.app/auth/login", {
+  const response = await fetch("http://localhost:8080/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ username, password }),
-    credentials: "include" // ✅ JSESSIONID 쿠키 받기 위해 꼭 필요!
+    //credentials: "include" // ✅ JSESSIONID 쿠키 받기 위해 꼭 필요!
   });
 
   const text = await response.text();
@@ -265,7 +267,7 @@ async function uploadPhoto() {
   const formData = new FormData();
   formData.append('file', file); // key는 서버에서 받는 이름: file
 
-  const response = await fetch('https://0bac-223-195-115-29.ngrok-free.app/admin/uploadPhoto', {
+  const response = await fetch('http://localhost:8080/admin/uploadPhoto', {
     method: 'POST',
     body: formData,
     credentials: 'include' // 세션 쿠키(JSESSIONID) 같이 보내기!

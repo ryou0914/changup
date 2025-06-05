@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const response = await fetch("https://d187-59-12-124-22.ngrok-free.app/admin/applications", {
+    const response = await fetch("http://localhost:8080/admin/applications", {
       method: "GET",
       credentials: "include" // 로그인 세션 쿠키 포함
     });
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       wrapper.innerHTML = `
         <div class="question-left">
-          <span class="label">질문</span>
+          <span class="label">전화번호</span>
           <div class="content">[${form.name}] ${form.content}</div>
         </div>
         <div class="timestamp">${form.createdAt?.replace("T", " ").substring(0, 16) || "-"}</div>

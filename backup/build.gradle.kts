@@ -4,15 +4,22 @@ plugins {
     id("org.springframework.boot") version "3.5.0"
     id("io.spring.dependency-management") version "1.1.7"
     kotlin("plugin.jpa") version "1.9.25"
+    application
 }
 
-group = "com.gujo-park"
+group = "com.uswchangup"
 version = "0.0.1-SNAPSHOT"
+
+
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+}
+
+application {
+    mainClass.set("com.uswchangup.backup.BackupApplicationKt")
 }
 
 configurations {
@@ -42,7 +49,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.springframework.security:spring-security-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    implementation("org.springframework.session:spring-session-core:3.2.0")
 
 
 }
@@ -66,3 +72,10 @@ noArg{
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.uswchangup.backup.BackupApplicationKt"
+    }
+}
+

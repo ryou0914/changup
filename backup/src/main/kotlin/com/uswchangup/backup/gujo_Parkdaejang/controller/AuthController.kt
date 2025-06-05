@@ -20,7 +20,7 @@ class AuthController(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) {
-
+// https://3ce7-223-195-115-29.ngrok-free.app
     //    @CrossOrigin(origins = ["http://127.0.0.1:8080"], allowCredentials = "true")
     @PostMapping("/auth/login")
     fun login(@RequestBody loginRequest: LoginRequestDto,

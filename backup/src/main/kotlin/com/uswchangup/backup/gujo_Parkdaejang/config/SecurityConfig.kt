@@ -32,16 +32,6 @@ class SecurityConfig {
             }
             .formLogin { it.disable() }
             .httpBasic { it.disable() }
-            .logout { logout ->
-                // ① 로그아웃 URL을 /logout 으로 지정
-                logout
-                    .logoutUrl("/logout")
-                    // ② 로그아웃 성공 후 리다이렉트할 페이지 (여기서는 / 로 보냄)
-                    .logoutSuccessUrl("/")
-                    .invalidateHttpSession(true)    // 세션 무효화
-                    .deleteCookies("JSESSIONID")    // 쿠키 삭제
-                    .permitAll()
-            }
             .sessionManagement { session ->
                 session
                     .sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.IF_REQUIRED)

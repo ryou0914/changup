@@ -22,12 +22,13 @@ class FormController(
         formRepository.save(entity)
         return ResponseEntity.ok("신청이 저장되었습니다.")
     }
-    // https://ca88-223-195-115-29.ngrok-free.app
+
     // 2) 관리자만 목록 조회
-//    @CrossOrigin(origins = ["http://127.0.0.1:5500"], allowCredentials = "true")
     @GetMapping("/admin/applications")
     @PreAuthorize("hasRole('ADMIN')")
     fun getAllApplications(): ResponseEntity<List<FormDto>> {
+        println("✅ 인증 객체: ${SecurityContextHolder.getContext().authentication}")
+
         // ⭐ 여기서 현재 SecurityContextHolder 상태를 확인!
         val auth = SecurityContextHolder.getContext().authentication
         println("현재 사용자 이름: ${auth?.name}")

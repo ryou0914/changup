@@ -23,7 +23,7 @@ class PhotoController(
 
         // 저장할 경로와 파일명
         val fileName = file.originalFilename ?: "unnamed"
-        val uploadDir = "C:\\Users\\binac\\Documents\\학교 활동\\usw-changup\\gujo-Parkdaejang\\gujo-Parkdaejang\\uploads"
+        val uploadDir = "C:\\Users\\binac\\Documents\\학교 활동\\uswchangup\\backup\\gujo_Parkdaejang\\uploads"
         val savePath = Paths.get(uploadDir, fileName).toFile()
 
         // 실제 파일 저장
