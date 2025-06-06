@@ -12,7 +12,8 @@ class CookieConfig {
 
     @Bean
     fun cookieSameSiteSupplier(): CookieSameSiteSupplier {
-        // SameSite=None 으로 설정 (HTTPS 환경 필요!)
+        // SameSite=None으로 설정! Secure도 자동으로 true로 설정됨 (HTTPS 환경에서만 동작)
+        // 사실 잘 모르겟음 뭐하는지
         return CookieSameSiteSupplier.ofNone()
     }
 

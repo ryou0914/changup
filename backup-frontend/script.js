@@ -212,7 +212,7 @@ window.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json"
         },
-        //credentials: "include",
+        credentials: "include",
         body: JSON.stringify({ name, number, content })
       });
 
@@ -241,7 +241,7 @@ async function login() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ username, password }),
-    //credentials: "include" // ✅ JSESSIONID 쿠키 받기 위해 꼭 필요!
+    credentials: "include" // ✅ JSESSIONID 쿠키 받기 위해 꼭 필요!
   });
 
   const text = await response.text();
