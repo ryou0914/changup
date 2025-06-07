@@ -3,6 +3,7 @@ package com.uswchangup.backup.gujo_Parkdaejang.config
 import org.apache.catalina.webresources.TomcatURLStreamHandlerFactory.disable
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
@@ -23,6 +24,7 @@ class SecurityConfig {
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
+            .cors(Customizer.withDefaults()) // ✅ CORS 활성화
             .csrf { it.disable() }
             .authorizeHttpRequests { auth ->
                 auth

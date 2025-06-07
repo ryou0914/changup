@@ -278,3 +278,26 @@ async function uploadPhoto() {
 }
 
 
+// 문의 게시판 익명화
+document.addEventListener("DOMContentLoaded", async () => {
+  const response = await fetch("/api/inquiries");
+  const data = await response.json();
+
+  const container = document.getElementById("post-list");
+
+  data.forEach(item => {
+    const box = document.createElement("div");
+    box.className = "inquiry-box";
+
+    const maskedContent = item.secret ? "비밀 글입니다." : item.content;
+
+    box.innerHTML = `
+      <div><strong>이름:</strong> ${item.secret ? "비공개" : item.name}</div>
+      <div><strong>연락처:</strong> ${item.secret ? "비공개" : item.phone}</div>
+      <div><strong>내용:</strong> ${maskedContent}</div>
+      <div><strong>작성일:</strong> ${item.createdAt}</div>
+    `;
+
+    container.appendChild(box);
+  });
+});
